@@ -12,18 +12,6 @@ No build step, no frameworks, no dependencies — open `index.html` and it runs.
 
 ---
 
-## Quick start
-
-```bash
-cd gachon-wind
-python3 -m http.server 8000
-# then open http://localhost:8000
-```
-
-You can also double-click `index.html`. A local server is recommended because browser storage APIs (used to remember the chosen language) are restricted on `file://` in some browsers.
-
----
-
 ## What's on the page
 
 | Section | What it does |
