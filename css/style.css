@@ -552,7 +552,11 @@ button { font: inherit; color: inherit; }
 .menu-btn[aria-expanded="true"] span:last-child { transform: translateY(-4px) rotate(-45deg); }
 
 /* Theme toggle — moon in the light theme, sun in the dark theme.
-   aria-pressed is true while the dark theme is on. */
+   aria-pressed is true while the dark theme is on. Both glyphs are stacked
+   in the same grid cell and trade places on the non-linear --theme-ease
+   curve, in lockstep with the palette crossfade: the leaving icon spins a
+   quarter turn clockwise out while the arriving one spins in from a quarter
+   turn behind it, so motion reads as one wheel stepping around. */
 .theme-btn {
   display: grid;
   place-items: center;
@@ -565,10 +569,18 @@ button { font: inherit; color: inherit; }
   transition: border-color 0.25s var(--ease), color 0.25s var(--ease), background 0.25s var(--ease);
 }
 .theme-btn:hover { border-color: var(--line-strong); background: var(--tint); }
-.theme-btn svg { width: 18px; height: 18px; }
-.theme-btn .icon-sun { display: none; }
-html[data-theme="dark"] .theme-btn .icon-sun { display: block; }
-html[data-theme="dark"] .theme-btn .icon-moon { display: none; }
+.theme-btn svg {
+  grid-area: 1 / 1;
+  width: 18px;
+  height: 18px;
+  transition:
+    opacity var(--theme-dur) var(--theme-ease),
+    transform var(--theme-dur) var(--theme-ease);
+}
+.theme-btn .icon-moon { opacity: 1; transform: none; }
+.theme-btn .icon-sun { opacity: 0; transform: rotate(-90deg) scale(0.55); }
+html[data-theme="dark"] .theme-btn .icon-moon { opacity: 0; transform: rotate(90deg) scale(0.55); }
+html[data-theme="dark"] .theme-btn .icon-sun { opacity: 1; transform: none; }
 
 /* ---------- Mobile menu ---------- */
 .mobile-menu {
