@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GACHON WIND — Baseball Club at Gachon University</title>
+  <meta name="description" content="The official home of GACHON WIND, Gachon University's student-run baseball club. Practice times, game schedule, gallery and sign-up — in English, Korean, Vietnamese, Japanese and Chinese.">
+  <meta name="theme-color" content="#1E509A">
+  <meta property="og:title" content="GACHON WIND — Baseball Club">
+  <meta property="og:description" content="One home for Gachon's baseball club: schedule, photos and a sign-up form that works.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="static/img/hero-batter.webp">
+  <link rel="icon" href="static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="GACHON WIND Baseball Club — home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 46 32" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="square">
+            <path d="M2 4 L14 16 L2 28"/>
+            <path d="M17 4 L29 16 L17 28"/>
+            <path d="M32 4 L44 16 L32 28"/>
+          </svg>
+        </span>
+        <span class="brand-type">
+          <span class="brand-name">GACHON WIND</span>
+          <span class="brand-sub">BASEBALL CLUB</span>
+        </span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="#club" data-nav data-i18n="nav.club">Club</a>
+        <a href="#schedule" data-nav data-i18n="nav.schedule">Schedule</a>
+        <a href="#gallery" data-nav data-i18n="nav.gallery">Gallery</a>
+        <a href="#join" data-nav data-i18n="nav.join">Join</a>
+        <a href="#contact" data-nav data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-select lang-select-sm">
+          <label class="sr-only" for="lang-header" data-i18n="nav.language">Language</label>
+          <select class="lang-select-input" id="lang-header" data-lang-select>
+            <option value="en" lang="en">English</option>
+            <option value="ko" lang="ko">한국어</option>
+            <option value="vi" lang="vi">Tiếng Việt</option>
+            <option value="ja" lang="ja">日本語</option>
+            <option value="zh" lang="zh">简体中文</option>
+          </select>
+          <span class="lang-select-chevron" aria-hidden="true"></span>
+        </div>
+        <a class="btn btn-primary btn-sm header-cta" href="#join" data-i18n="nav.signup">Sign up</a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu" data-i18n-attr="aria-label:nav.menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <nav class="mobile-nav" aria-label="Mobile">
+      <a href="#club" data-nav><span class="mn-index">01</span><span data-i18n="nav.club">Club</span></a>
+      <a href="#schedule" data-nav><span class="mn-index">02</span><span data-i18n="nav.schedule">Schedule</span></a>
+      <a href="#gallery" data-nav><span class="mn-index">03</span><span data-i18n="nav.gallery">Gallery</span></a>
+      <a href="#join" data-nav><span class="mn-index">04</span><span data-i18n="nav.join">Join</span></a>
+      <a href="#contact" data-nav><span class="mn-index">05</span><span data-i18n="nav.contact">Contact</span></a>
+    </nav>
+    <div class="menu-meta">
+      <p class="menu-practice">
+        <span data-i18n="hero.practiceLabel">Practice</span>
+        <span data-i18n="hero.practiceValue">Tue &amp; Thu · 18:30</span>
+      </p>
+      <a class="menu-ig" href="https://www.instagram.com/gcu_wind" target="_blank" rel="noopener">@GCU_WIND</a>
+    </div>
+    <div class="mobile-actions">
+      <a class="btn btn-primary" href="#join" data-i18n="nav.signup">Sign up</a>
+      <div class="lang-select lang-select-lg">
+        <label class="sr-only" for="lang-menu" data-i18n="nav.language">Language</label>
+        <select class="lang-select-input" id="lang-menu" data-lang-select>
+          <option value="en" lang="en">English</option>
+          <option value="ko" lang="ko">한국어</option>
+          <option value="vi" lang="vi">Tiếng Việt</option>
+          <option value="ja" lang="ja">日本語</option>
+          <option value="zh" lang="zh">简体中文</option>
+        </select>
+        <span class="lang-select-chevron" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">
+          <span class="eyebrow-mark" aria-hidden="true"></span>
+          <span data-i18n="hero.kicker">Gachon University · Creative Club Activity</span>
+        </p>
+        <h1 class="hero-title">
+          <span>GACHON</span>
+          <span>WIND<span class="red">.</span></span>
+        </h1>
+        <p class="hero-sub">
+          <span class="chevrons" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span data-i18n="hero.sub">BASEBALL CLUB</span>
+        </p>
+        <p class="hero-lead" data-i18n="hero.lead">One home for Gachon's baseball club — practice times, game schedule, photos and a sign-up form that actually works. In your language.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#join">
+            <span data-i18n="hero.ctaJoin">Join the club</span>
+            <span class="btn-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="btn btn-ghost" href="#schedule" data-i18n="hero.ctaSchedule">See the schedule</a>
+        </div>
+        <dl class="hero-meta">
+          <div>
+            <dt data-i18n="hero.practiceLabel">Practice</dt>
+            <dd data-i18n="hero.practiceValue">Tue &amp; Thu · 18:30</dd>
+          </div>
+          <div>
+            <dt data-i18n="hero.fieldLabel">Home field</dt>
+            <dd data-i18n="hero.fieldValue">Global Campus, Seongnam</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="hero-media">
+        <img src="static/img/hero-batter.webp" alt="A Gachon WIND batter waiting for the pitch" width="1200" height="1500" fetchpriority="high" data-i18n-attr="alt:hero.alt">
+        <span class="hero-tag" data-i18n="hero.photoTag">2026 Fall Series</span>
+        <p class="hero-vertical" aria-hidden="true">SEONGNAM · KOREA</p>
+        <a class="hero-next" href="#schedule" data-hero-next data-i18n-attr="aria-label:hero.nextAria">
+          <span class="hero-next-label" data-i18n="hero.nextLabel">Next game</span>
+          <strong class="hero-next-match" data-next-match>TBD</strong>
+          <span class="hero-next-when" data-next-when>—</span>
+          <span class="hero-next-count" data-next-count></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>PLAY BALL</span><span class="ticker-dot"></span>
+        <span>GACHON WIND</span><span class="ticker-dot"></span>
+        <span>BASEBALL CLUB</span><span class="ticker-dot"></span>
+        <span>SEONGNAM · KOREA</span><span class="ticker-dot"></span>
+        <span>PLAY BALL</span><span class="ticker-dot"></span>
+        <span>GACHON WIND</span><span class="ticker-dot"></span>
+        <span>BASEBALL CLUB</span><span class="ticker-dot"></span>
+        <span>SEONGNAM · KOREA</span><span class="ticker-dot"></span>
+      </div>
+    </div>
+
+    <!-- CLUB -->
+    <section class="section club" id="club">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-head-main">
+            <p class="kicker"><span class="kicker-mark" aria-hidden="true"></span><span data-i18n="about.kicker">The club</span></p>
+            <h2 class="display" data-i18n-html="about.title">MORE THAN<br><span class="red">A CLUB.</span></h2>
+          </div>
+          <p class="section-note" data-i18n="about.note">Student-run since day one. Open to every level.</p>
+        </div>
+
+        <div class="club-grid">
+          <div class="club-copy reveal">
+            <p class="lead" data-i18n="about.lead">GACHON WIND is the university's student-run baseball club. No experience needed — we'll lend you a glove.</p>
+            <p data-i18n="about.body">We practise twice a week at the Global Campus field, play friendlies against universities across the Seoul area, and welcome players of every level, including complete beginners. Around half our members are international students.</p>
+            <a class="text-link" href="#join">
+              <span data-i18n="about.link">Come to a practice</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+
+          <figure class="club-figure reveal">
+            <img src="static/img/gallery-field.webp" alt="The baseball field under an open sky" width="1400" height="933" data-i18n-attr="alt:about.alt">
+            <figcaption><span data-i18n="about.figureCap">Global Campus Field · Seongnam</span></figcaption>
+          </figure>
+        </div>
+
+        <dl class="stats">
+          <div class="stat">
+            <dt data-i18n="about.statMembers">Members</dt>
+            <dd>40<span>+</span></dd>
+          </div>
+          <div class="stat">
+            <dt data-i18n="about.statPractices">Practices a week</dt>
+            <dd>2</dd>
+          </div>
+          <div class="stat">
+            <dt data-i18n="about.statGames">Games a season</dt>
+            <dd>8</dd>
+          </div>
+          <div class="stat">
+            <dt data-i18n="about.statLanguages">Languages</dt>
+            <dd>5</dd>
+          </div>
+        </dl>
+
+        <div class="activities">
+          <div class="activities-head">
+            <h3 class="subhead" data-i18n="activities.title">What we do</h3>
+            <p class="section-note" data-i18n="activities.note">Twice a week, all season.</p>
+          </div>
+          <div class="activity-grid">
+            <article class="activity reveal">
+              <span class="index" aria-hidden="true">01</span>
+              <h4 data-i18n="act1.title">Weekly practice</h4>
+              <p data-i18n="act1.body">Drills, batting practice and scrimmages every Tuesday and Thursday evening. Bats, balls and gloves are provided.</p>
+            </article>
+            <article class="activity reveal">
+              <span class="index" aria-hidden="true">02</span>
+              <h4 data-i18n="act2.title">Game days</h4>
+              <p data-i18n="act2.body">Friendlies and league games against universities around Seoul, home and away. Supporters are always welcome.</p>
+            </article>
+            <article class="activity reveal">
+              <span class="index" aria-hidden="true">03</span>
+              <h4 data-i18n="act3.title">Campus life</h4>
+              <p data-i18n="act3.body">CCA fairs, welcome events and end-of-season gatherings. Find us at the booths each March and September.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section class="section schedule" id="schedule">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-head-main">
+            <p class="kicker"><span class="kicker-mark" aria-hidden="true"></span><span data-i18n="schedule.kicker">Fixtures</span></p>
+            <h2 class="display" data-i18n-html="schedule.title">2026 FALL<br><span class="red">SERIES.</span></h2>
+          </div>
+          <p class="section-note" data-i18n="schedule.lead">Every remaining game of the season, in one place. All times KST.</p>
+        </div>
+
+        <div class="next-game reveal">
+          <div class="next-game-info">
+            <p class="next-label"><span class="live-dot" aria-hidden="true"></span><span data-i18n="schedule.nextLabel">Next game</span></p>
+            <p class="next-match"><span>GACHON WIND</span> <span class="next-vs">VS</span> <span data-next-opponent>—</span></p>
+            <p class="next-meta" data-next-meta>—</p>
+            <p class="next-badge" data-next-badge data-i18n="schedule.home">Home</p>
+          </div>
+          <div class="countdown" data-countdown aria-hidden="true">
+            <div class="count-block"><span class="count-num" data-count-days>00</span><span class="count-label" data-i18n="schedule.days">days</span></div>
+            <div class="count-block"><span class="count-num" data-count-hours>00</span><span class="count-label" data-i18n="schedule.hours">hrs</span></div>
+            <div class="count-block"><span class="count-num" data-count-mins>00</span><span class="count-label" data-i18n="schedule.mins">min</span></div>
+            <div class="count-block"><span class="count-num" data-count-secs>00</span><span class="count-label" data-i18n="schedule.secs">sec</span></div>
+          </div>
+          <div class="next-game-actions">
+            <button class="btn btn-cream" type="button" data-add-calendar disabled>
+              <span data-i18n="schedule.addCal">Add to calendar</span>
+              <span aria-hidden="true">＋</span>
+            </button>
+            <a class="next-link" href="#contact" data-i18n="schedule.directions">Directions</a>
+          </div>
+        </div>
+
+        <div class="fixtures">
+          <div class="fixtures-head" aria-hidden="true">
+            <span data-i18n="schedule.date">Date</span>
+            <span data-i18n="schedule.opponent">Opponent</span>
+            <span data-i18n="schedule.venue">Venue</span>
+            <span data-i18n="schedule.time">Time</span>
+          </div>
+          <ol class="fixtures-list" data-fixtures></ol>
+          <p class="fixtures-empty" data-fixtures-empty hidden data-i18n="schedule.empty">The next season's fixtures are being confirmed. Check back soon.</p>
+        </div>
+        <p class="footnote" data-i18n="schedule.footnote">Friendly and league fixtures. Times are Korea Standard Time (KST) and may change — follow @GCU_WIND for updates.</p>
+      </div>
+    </section>
+
+    <!-- VALUES -->
+    <section class="section values" id="why">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-head-main">
+            <p class="kicker"><span class="kicker-mark" aria-hidden="true"></span><span data-i18n="values.kicker">Why it's better</span></p>
+            <h2 class="display" data-i18n-html="values.title">BUILT TO BE<br><span class="red">USED.</span></h2>
+          </div>
+          <p class="section-note" data-i18n="values.note">Three things the old pages could never do.</p>
+        </div>
+
+        <div class="values-grid">
+          <article class="value reveal">
+            <span class="value-chev" aria-hidden="true"></span>
+            <h3 data-i18n="values.v1t">Always current</h3>
+            <p data-i18n="values.v1b">No stale CCA page, no silent Instagram. The club updates the schedule, results and gallery after every game.</p>
+          </article>
+          <article class="value reveal">
+            <span class="value-chev" aria-hidden="true"></span>
+            <h3 data-i18n="values.v2t">Easy to join</h3>
+            <p data-i18n="values.v2b">A sign-up form and clear contacts replace broken links and dead ends. Joining takes a few clicks, not a scavenger hunt.</p>
+          </article>
+          <article class="value reveal">
+            <span class="value-chev" aria-hidden="true"></span>
+            <h3 data-i18n="values.v3t">Truly accessible</h3>
+            <p data-i18n="values.v3b">Five languages, a mobile-first layout and large, readable type — so every Gachon student can use it.</p>
+          </article>
+        </div>
+
+        <div class="lang-banner">
+          <p class="lang-banner-label" data-i18n="values.langLabel">Read this site in</p>
+          <div class="lang-select lang-select-lg">
+            <label class="sr-only" for="lang-banner" data-i18n="nav.language">Language</label>
+            <select class="lang-select-input" id="lang-banner" data-lang-select>
+              <option value="en" lang="en">English</option>
+              <option value="ko" lang="ko">한국어</option>
+              <option value="vi" lang="vi">Tiếng Việt</option>
+              <option value="ja" lang="ja">日本語</option>
+              <option value="zh" lang="zh">简体中文</option>
+            </select>
+            <span class="lang-select-chevron" aria-hidden="true"></span>
+          </div>
+          <p class="lang-banner-note" data-i18n="values.langNote">Switch anytime — the whole page changes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section gallery" id="gallery">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-head-main">
+            <p class="kicker"><span class="kicker-mark" aria-hidden="true"></span><span data-i18n="gallery.kicker">Gallery</span></p>
+            <h2 class="display" data-i18n-html="gallery.title">A SEASON<br>IN <span class="red">FRAMES.</span></h2>
+          </div>
+          <p class="section-note" data-i18n="gallery.lead">Practice nights, game days and the field we call home.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <button class="tile tile-field" type="button" data-lightbox data-full="static/img/gallery-field.webp" data-caption-key="gallery.cap1">
+            <img src="static/img/gallery-field.webp" alt="The baseball field under an open sky" data-i18n-attr="alt:about.alt">
+            <span class="tile-cap"><span data-i18n="gallery.cap1">Home field, Seongnam</span></span>
+          </button>
+          <button class="tile tile-gear" type="button" data-lightbox data-full="static/img/gallery-gear.webp" data-caption-key="gallery.cap5">
+            <img src="static/img/gallery-gear.webp" alt="Helmets and bats on the dirt" data-i18n-attr="alt:gallery.alt5">
+            <span class="tile-cap"><span data-i18n="gallery.cap5">Helmets and bats, ready</span></span>
+          </button>
+          <button class="tile tile-ball" type="button" data-lightbox data-full="static/img/gallery-ball.webp" data-caption-key="gallery.cap2">
+            <img src="static/img/gallery-ball.webp" alt="A baseball resting in the grass" data-i18n-attr="alt:gallery.alt2">
+            <span class="tile-cap"><span data-i18n="gallery.cap2">Between innings</span></span>
+          </button>
+          <button class="tile tile-aerial" type="button" data-lightbox data-full="static/img/gallery-aerial.webp" data-caption-key="gallery.cap4">
+            <img src="static/img/gallery-aerial.webp" alt="Aerial view of a baseball diamond" data-i18n-attr="alt:gallery.alt4">
+            <span class="tile-cap"><span data-i18n="gallery.cap4">The diamond, from above</span></span>
+          </button>
+        </div>
+        <a class="ig-banner" href="https://www.instagram.com/gcu_wind" target="_blank" rel="noopener">
+          <span class="ig-handle">@GCU_WIND</span>
+          <span class="ig-label" data-i18n="gallery.ig">More on Instagram</span>
+          <span class="chevrons" aria-hidden="true"><i></i><i></i><i></i></span>
+        </a>
+        <p class="gallery-hint" data-i18n="gallery.hint">Tap a photo to enlarge.</p>
+      </div>
+    </section>
+
+    <!-- JOIN -->
+    <section class="join" id="join">
+      <figure class="join-media">
+        <img src="static/img/gallery-sunset.webp" alt="A baseball at golden hour" data-i18n-attr="alt:join.alt">
+        <figcaption data-i18n="join.caption">Golden hour at the field</figcaption>
+      </figure>
+      <div class="join-body">
+        <p class="kicker"><span class="kicker-mark" aria-hidden="true"></span><span data-i18n="join.kicker">Sign up</span></p>
+        <h2 class="display" data-i18n-html="join.title">EASY<br><span class="red">TO JOIN.</span></h2>
+        <p class="lead" data-i18n="join.lead">No tryouts, no experience required. Sign up online, then come to a Tuesday or Thursday session — we'll lend you a glove.</p>
+
+        <ol class="steps">
+          <li>
+            <span class="step-num" aria-hidden="true">1</span>
+            <div>
+              <h3 data-i18n="join.step1t">Fill in the form</h3>
+              <p data-i18n="join.step1b">Tell us your name, student ID and whether you've played before. It takes about a minute.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-num" aria-hidden="true">2</span>
+            <div>
+              <h3 data-i18n="join.step2t">Come to a practice</h3>
+              <p data-i18n="join.step2b">We reply within three days with the next session and what to bring.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-num" aria-hidden="true">3</span>
+            <div>
+              <h3 data-i18n="join.step3t">Get your kit</h3>
+              <p data-i18n="join.step3b">New members get a club shirt and a locker. Membership is free for Gachon students.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="join-actions">
+          <button class="btn btn-primary" type="button" data-open-signup>
+            <span data-i18n="join.cta">Open the sign-up form</span>
+            <span class="btn-arrow" aria-hidden="true">→</span>
+          </button>
+          <a class="text-link" href="mailto:gachonwind@gmail.com" data-i18n="join.secondary">Email us instead</a>
+        </div>
+        <p class="join-note" data-i18n="join.note">Available in English, Korean, Vietnamese, Japanese and Chinese.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-head-main">
+            <p class="kicker"><span class="kicker-mark" aria-hidden="true"></span><span data-i18n="contact.kicker">Contact</span></p>
+            <h2 class="display" data-i18n-html="contact.title">COME<br><span class="red">FIND US.</span></h2>
+          </div>
+          <p class="section-note" data-i18n="contact.lead">Come to the field during practice, or reach us on any of these.</p>
+        </div>
+
+        <div class="contact-grid">
+          <ul class="contact-list">
+            <li>
+              <span class="contact-label" data-i18n="contact.email">Email</span>
+              <a href="mailto:gachonwind@gmail.com">gachonwind@gmail.com</a>
+            </li>
+            <li>
+              <span class="contact-label" data-i18n="contact.instagram">Instagram</span>
+              <a href="https://www.instagram.com/gcu_wind" target="_blank" rel="noopener">@GCU_WIND</a>
+            </li>
+            <li>
+              <span class="contact-label" data-i18n="contact.kakao">KakaoTalk</span>
+              <span>@gcu_wind</span>
+            </li>
+            <li>
+              <span class="contact-label" data-i18n="contact.field">Practice field</span>
+              <span data-i18n-html="contact.address">Global Campus, Gachon University<br>1342 Seongnam-daero, Sujeong-gu, Seongnam</span>
+            </li>
+          </ul>
+
+          <aside class="practice-card">
+            <p class="practice-kicker" data-i18n="contact.hours">Practice hours</p>
+            <p class="practice-days" data-i18n="contact.hoursDays">TUE &amp; THU</p>
+            <p class="practice-time">18:30 — 21:00</p>
+            <p class="practice-place" data-i18n="contact.fieldValue">Global Campus Field, Seongnam</p>
+            <a class="btn btn-ghost btn-sm" href="https://maps.google.com/?q=Gachon+University+Global+Campus" target="_blank" rel="noopener">
+              <span data-i18n="contact.directions">Open in Maps</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-name">GACHON WIND</span>
+          <p data-i18n="footer.tagline">The official home of Gachon University's baseball club.</p>
+          <a class="footer-social" href="https://www.instagram.com/gcu_wind" target="_blank" rel="noopener">
+            <span aria-hidden="true">◎</span> @GCU_WIND
+          </a>
+        </div>
+        <nav class="footer-cols" aria-label="Footer">
+          <div>
+            <h3 data-i18n="footer.explore">Explore</h3>
+            <a href="#club" data-i18n="nav.club">Club</a>
+            <a href="#schedule" data-i18n="nav.schedule">Schedule</a>
+            <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+            <a href="#contact" data-i18n="nav.contact">Contact</a>
+          </div>
+          <div>
+            <h3 data-i18n="footer.join">Join</h3>
+            <button class="link-btn" type="button" data-open-signup data-i18n="footer.signup">Sign-up form</button>
+            <a href="mailto:gachonwind@gmail.com" data-i18n="contact.email">Email</a>
+            <a href="https://www.instagram.com/gcu_wind" target="_blank" rel="noopener" data-i18n="contact.instagram">Instagram</a>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 GACHON WIND BASEBALL CLUB</p>
+        <p data-i18n="footer.credit">Team 16 · Web Programming</p>
+        <a href="#top" data-i18n="footer.top">Back to top ↑</a>
+      </div>
+      <p class="footer-giant" aria-hidden="true">GACHON WIND</p>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" data-i18n-attr="aria-label:gallery.viewer" hidden>
+    <button class="lb-btn lb-close" type="button" data-lb-close aria-label="Close" data-i18n-attr="aria-label:gallery.close">×</button>
+    <button class="lb-btn lb-prev" type="button" data-lb-prev aria-label="Previous photo" data-i18n-attr="aria-label:gallery.prev">←</button>
+    <figure class="lb-figure">
+      <img id="lb-img" alt="">
+      <figcaption id="lb-caption"></figcaption>
+    </figure>
+    <button class="lb-btn lb-next" type="button" data-lb-next aria-label="Next photo" data-i18n-attr="aria-label:gallery.next">→</button>
+    <p class="lb-count" id="lb-count" aria-hidden="true"></p>
+  </div>
+
+  <!-- SIGN-UP DIALOG -->
+  <dialog class="signup" id="signup" aria-labelledby="signup-title">
+    <div class="signup-shell">
+      <button class="signup-close" type="button" data-close-signup aria-label="Close" data-i18n-attr="aria-label:form.close">×</button>
+
+      <div data-signup-form-view>
+        <p class="kicker"><span class="kicker-mark" aria-hidden="true"></span><span data-i18n="modal.kicker">Sign up</span></p>
+        <h2 class="signup-title" id="signup-title" data-i18n="modal.title">Join GACHON WIND</h2>
+        <p class="signup-sub" data-i18n="modal.sub">Four quick fields. We reply within three days.</p>
+
+        <form class="signup-form" id="signup-form" novalidate>
+          <div class="field">
+            <label for="f-name"><span data-i18n="form.name">Name</span><span class="req" aria-hidden="true">*</span></label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-error" data-i18n-attr="placeholder:form.namePh">
+            <p class="field-error" id="f-name-error" data-error-for="f-name" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-student"><span data-i18n="form.studentId">Student ID</span><span class="req" aria-hidden="true">*</span></label>
+            <input id="f-student" name="studentId" type="text" inputmode="numeric" autocomplete="off" required aria-describedby="f-student-error" data-i18n-attr="placeholder:form.studentIdPh">
+            <p class="field-error" id="f-student-error" data-error-for="f-student" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-email"><span data-i18n="form.email">Email</span><span class="req" aria-hidden="true">*</span></label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="f-email-error" data-i18n-attr="placeholder:form.emailPh">
+            <p class="field-error" id="f-email-error" data-error-for="f-email" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-exp"><span data-i18n="form.experience">Baseball experience</span></label>
+            <select id="f-exp" name="experience">
+              <option value="none" data-i18n="form.exp0">Never played</option>
+              <option value="casual" data-i18n="form.exp1">Played casually</option>
+              <option value="team" data-i18n="form.exp2">Played in a team</option>
+            </select>
+          </div>
+          <p class="form-error" data-form-error role="alert" hidden></p>
+          <button class="btn btn-primary" type="submit">
+            <span data-i18n="form.submit">Build my application</span>
+            <span class="btn-arrow" aria-hidden="true">→</span>
+          </button>
+          <p class="form-note" data-i18n="form.note">Your application opens in your email app. Nothing is sent automatically.</p>
+        </form>
+      </div>
+
+      <div class="signup-success" data-signup-success-view hidden>
+        <p class="kicker"><span class="kicker-mark" aria-hidden="true"></span><span data-i18n="form.successKicker">Ready to send</span></p>
+        <h2 class="signup-title" data-i18n="form.successTitle">Almost done.</h2>
+        <p class="signup-sub" data-success-body></p>
+        <div class="success-actions">
+          <a class="btn btn-primary" data-mailto href="#">
+            <span data-i18n="form.send">Send by email</span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <button class="btn btn-ghost" type="button" data-copy>
+            <span data-i18n="form.copy">Copy details</span>
+          </button>
+        </div>
+        <p class="copy-status" data-copy-status aria-live="polite"></p>
+        <button class="link-btn" type="button" data-close-signup data-i18n="form.close">Close</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
