@@ -153,7 +153,10 @@
      The saved choice wins; otherwise the page follows prefers-color-scheme
      and keeps following it until the visitor toggles. The <html data-theme>
      attribute is set before first paint by a small inline script in <head>,
-     so there is no flash of the wrong theme; applyTheme() re-syncs it here. */
+     so there is no flash of the wrong theme; applyTheme() re-syncs it here.
+     The colours cross-fade in CSS alone: the palette tokens are registered
+     with @property and <html> transitions them on the non-linear curve in
+     css/style.css ("Theme crossfade"), so this function stays attribute-only. */
   var THEME_KEY = "gw-theme";
   var THEME_COLORS = { light: "#1E509A", dark: "#12161d" };
   var themeToggles = $$("[data-theme-toggle]");

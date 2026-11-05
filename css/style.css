@@ -119,6 +119,11 @@
   --pad: clamp(20px, 4.4vw, 64px);
   --section: clamp(64px, 8.4vw, 120px);
   --ease: cubic-bezier(0.22, 0.7, 0.2, 1);
+  /* Theme crossfade — a deliberately non-linear ease-in-out (easeInOutCubic):
+     the dark ⇄ light flip starts and settles gently and moves fastest through
+     the middle, like a dimmer, instead of snapping or lerping linearly. */
+  --theme-dur: 0.6s;
+  --theme-ease: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 /* ---------- Dark theme ----------
@@ -151,6 +156,36 @@ html[data-theme="dark"] {
   --danger-field: rgba(255, 90, 105, 0.1);
   --placeholder: #79828d;
 }
+
+/* ---------- Registered tokens ----------
+   The changing colour tokens are registered with @property so the theme
+   flip can TRANSITION them on <html> ("Theme crossfade", Motion section):
+   every var() reader — surfaces, accents, borders — follows the animated
+   value frame by frame, in one shared curve. Unregistered tokens either
+   don't change between themes (--paper) or are fine to snap
+   (--header-shadow). Browsers without @property simply switch instantly. */
+@property --bg { syntax: "<color>"; inherits: true; initial-value: #f8f8f8; }
+@property --bg-alt { syntax: "<color>"; inherits: true; initial-value: #eef1f6; }
+@property --surface { syntax: "<color>"; inherits: true; initial-value: #ffffff; }
+@property --surface-hero { syntax: "<color>"; inherits: true; initial-value: rgba(248, 248, 248, 0.97); }
+@property --header-bg { syntax: "<color>"; inherits: true; initial-value: rgba(248, 248, 248, 0.92); }
+@property --ink { syntax: "<color>"; inherits: true; initial-value: #262626; }
+@property --ink-soft { syntax: "<color>"; inherits: true; initial-value: #464646; }
+@property --muted { syntax: "<color>"; inherits: true; initial-value: #666c74; }
+@property --blue { syntax: "<color>"; inherits: true; initial-value: #1e509a; }
+@property --blue-panel { syntax: "<color>"; inherits: true; initial-value: #1e509a; }
+@property --blue-deep { syntax: "<color>"; inherits: true; initial-value: #153b72; }
+@property --red { syntax: "<color>"; inherits: true; initial-value: #ff2c3e; }
+@property --red-ink { syntax: "<color>"; inherits: true; initial-value: #c8102e; }
+@property --red-panel { syntax: "<color>"; inherits: true; initial-value: #c8102e; }
+@property --line { syntax: "<color>"; inherits: true; initial-value: rgba(30, 80, 154, 0.16); }
+@property --line-strong { syntax: "<color>"; inherits: true; initial-value: rgba(30, 80, 154, 0.42); }
+@property --tint { syntax: "<color>"; inherits: true; initial-value: rgba(30, 80, 154, 0.05); }
+@property --danger { syntax: "<color>"; inherits: true; initial-value: #b00020; }
+@property --danger-ink { syntax: "<color>"; inherits: true; initial-value: #8f001a; }
+@property --danger-soft { syntax: "<color>"; inherits: true; initial-value: #fff0f1; }
+@property --danger-field { syntax: "<color>"; inherits: true; initial-value: #fff6f6; }
+@property --placeholder { syntax: "<color>"; inherits: true; initial-value: #9a9a9a; }
 
 /* ---------- Reset / base ---------- */
 *,
@@ -1713,6 +1748,39 @@ html[data-theme="dark"] .theme-btn .icon-moon { display: none; }
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
   .reveal { opacity: 1; transform: none; }
   .ticker-track { animation: none; }
+}
+
+/* ---------- Theme crossfade ----------
+   The dark ⇄ light flip transitions the registered colour tokens right here
+   on <html> with the non-linear --theme-ease curve: one shared animation
+   drives every surface, accent and border on the page, while each
+   component's own hover/reveal transitions keep their original timing.
+   prefers-reduced-motion collapses this to an instant switch through the
+   global reduce rule above. */
+html {
+  transition:
+    --bg var(--theme-dur) var(--theme-ease),
+    --bg-alt var(--theme-dur) var(--theme-ease),
+    --surface var(--theme-dur) var(--theme-ease),
+    --surface-hero var(--theme-dur) var(--theme-ease),
+    --header-bg var(--theme-dur) var(--theme-ease),
+    --ink var(--theme-dur) var(--theme-ease),
+    --ink-soft var(--theme-dur) var(--theme-ease),
+    --muted var(--theme-dur) var(--theme-ease),
+    --blue var(--theme-dur) var(--theme-ease),
+    --blue-panel var(--theme-dur) var(--theme-ease),
+    --blue-deep var(--theme-dur) var(--theme-ease),
+    --red var(--theme-dur) var(--theme-ease),
+    --red-ink var(--theme-dur) var(--theme-ease),
+    --red-panel var(--theme-dur) var(--theme-ease),
+    --line var(--theme-dur) var(--theme-ease),
+    --line-strong var(--theme-dur) var(--theme-ease),
+    --tint var(--theme-dur) var(--theme-ease),
+    --danger var(--theme-dur) var(--theme-ease),
+    --danger-ink var(--theme-dur) var(--theme-ease),
+    --danger-soft var(--theme-dur) var(--theme-ease),
+    --danger-field var(--theme-dur) var(--theme-ease),
+    --placeholder var(--theme-dur) var(--theme-ease);
 }
 
 /* ---------- CJK typography ----------

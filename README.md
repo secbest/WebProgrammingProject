@@ -49,7 +49,7 @@ The nav links point to sections on this page, so nothing dead-ends — the start
 ## Features
 
 - **Five languages** — English, Korean, Vietnamese, Japanese and Simplified Chinese, switchable at any time from a dropdown. The choice is remembered, and the page title, dates, schedule, fixture names and form all follow it. Korean, Japanese and Chinese headings use a heavy CJK fallback because Anton has no Hangul, Kana or Han glyphs.
-- **Dark · light switcher** — a moon/sun button in the header (and in the mobile drawer) flips the whole palette: paper becomes night blue, royal blue lifts to a readable steel blue, and the deep panels stay dark. The choice is remembered in `localStorage`; first-time visitors get their OS `prefers-color-scheme`, kept in sync until they toggle. A tiny inline script applies the theme before first paint, so there is no flash of the wrong theme, and the mobile browser chrome colour follows via `<meta name="theme-color">`.
+- **Dark · light switcher** — a moon/sun button in the header (and in the mobile drawer) flips the whole palette: paper becomes night blue, royal blue lifts to a readable steel blue, and the deep panels stay dark. The choice is remembered in `localStorage`; first-time visitors get their OS `prefers-color-scheme`, kept in sync until they toggle. A tiny inline script applies the theme before first paint, so there is no flash of the wrong theme, and the mobile browser chrome colour follows via `<meta name="theme-color">`. The flip itself cross-fades: the colour tokens are registered with `@property` and `<html>` transitions them on a non-linear ease-in-out curve, so the page glides like a dimmer rather than snapping (instant under `prefers-reduced-motion`).
 - **Live next-game countdown** — reads the fixture list, promotes the next future game, and hides itself when the season is over.
 - **Calendar download** — generates a valid `.ics` event (KST times converted to UTC) for the next fixture.
 - **Sign-up form** — client-side validation, translated errors and ARIA states. It assembles an application and hands it to the club's email (nothing is silently stored or “sent”). Users can copy the details instead.
@@ -129,6 +129,8 @@ The dark theme is a single `html[data-theme="dark"]` block right below the token
 - **Panels** (`--blue-panel`, `--red-panel`, `--blue-deep`) are solid surfaces that keep light (`--paper`) text on them in both themes — `--paper` itself never changes. `--bg`, `--bg-alt` and `--surface` are the page, alternate-section and card/input backgrounds.
 
 So to add a new component: use accent tokens for text/borders on the background, panel tokens for filled surfaces, and both themes work automatically.
+
+The flip between them is animated, and its timing lives with the tokens too: `--theme-dur` (0.6s) and `--theme-ease` — a deliberately non-linear ease-in-out, `cubic-bezier(0.65, 0, 0.35, 1)` — gentle at both ends, quick through the middle. The changing colour tokens are registered with `@property` (see "Registered tokens" in `css/style.css`), and one `transition` on `<html>` animates them, so every `var()` reader cross-fades together while hover, reveal and marquee transitions keep their own timing. If you add a new theme-dependent colour token, register it and add it to that `transition` list; browsers without `@property` just switch instantly.
 
 ---
 
