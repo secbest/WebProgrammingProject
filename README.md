@@ -2,8 +2,6 @@
 
 A responsive, multilingual homepage for **GACHON WIND**, Gachon University's student-run baseball club, built from the visual language of Team 16's proposal deck.
 
-No build step, no frameworks, no dependencies — open `index.html` and it runs.
-
 ![Desktop homepage](preview/desktop-home.jpg)
 
 *The same page in Simplified Chinese:*
