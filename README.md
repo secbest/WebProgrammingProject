@@ -14,7 +14,7 @@ A responsive, multilingual homepage for **GACHON WIND**, Gachon University's stu
 
 | Section | What it does |
 | --- | --- |
-| Sticky header | Section navigation, language dropdown (English · 한국어 · Tiếng Việt · 日本語 · 简体中文), sign-up CTA, mobile drawer |
+| Sticky header | Section navigation, language dropdown (English · 한국어 · Tiếng Việt · 日本語 · 简体中文), dark/light theme toggle, sign-up CTA, mobile drawer |
 | Hero | Brand lockup, practice details, primary CTAs, live “next game” card with D-day countdown |
 | Ticker | Club wordmark marquee, pausable on hover |
 | The club | Club profile, stats, three activity cards, home-field photo |
@@ -49,6 +49,7 @@ The nav links point to sections on this page, so nothing dead-ends — the start
 ## Features
 
 - **Five languages** — English, Korean, Vietnamese, Japanese and Simplified Chinese, switchable at any time from a dropdown. The choice is remembered, and the page title, dates, schedule, fixture names and form all follow it. Korean, Japanese and Chinese headings use a heavy CJK fallback because Anton has no Hangul, Kana or Han glyphs.
+- **Dark · light switcher** — a moon/sun button in the header (and in the mobile drawer) flips the whole palette: paper becomes night blue, royal blue lifts to a readable steel blue, and the deep panels stay dark. The choice is remembered in `localStorage`; first-time visitors get their OS `prefers-color-scheme`, kept in sync until they toggle. A tiny inline script applies the theme before first paint, so there is no flash of the wrong theme, and the mobile browser chrome colour follows via `<meta name="theme-color">`.
 - **Live next-game countdown** — reads the fixture list, promotes the next future game, and hides itself when the season is over.
 - **Calendar download** — generates a valid `.ics` event (KST times converted to UTC) for the next fixture.
 - **Sign-up form** — client-side validation, translated errors and ARIA states. It assembles an application and hands it to the club's email (nothing is silently stored or “sent”). Users can copy the details instead.
@@ -122,6 +123,13 @@ To connect a real endpoint, replace the `form.addEventListener("submit", …)` b
 
 All design tokens are at the top of `css/style.css` (`:root`). Changing `--blue`, `--red` and `--display` re-themes the page. Fluid sizes use `clamp()`; the page has three breakpoints (1060 px for the nav, 1024/860 px for layout, 720/520 px for mobile details).
 
+The dark theme is a single `html[data-theme="dark"]` block right below the tokens — it only overrides token values, no component rules. Two families of tokens do different jobs:
+
+- **Accents** (`--blue`, `--red`, `--red-ink`, `--ink`, `--muted`) are text and line colours on the page background, so they must lift lighter in the dark theme to keep WCAG AA contrast.
+- **Panels** (`--blue-panel`, `--red-panel`, `--blue-deep`) are solid surfaces that keep light (`--paper`) text on them in both themes — `--paper` itself never changes. `--bg`, `--bg-alt` and `--surface` are the page, alternate-section and card/input backgrounds.
+
+So to add a new component: use accent tokens for text/borders on the background, panel tokens for filled surfaces, and both themes work automatically.
+
 ---
 
 ## Accessibility & QA
@@ -132,6 +140,7 @@ Checked in headless Chromium at 1440, 800 and 390 px, plus the open dialog, ligh
 - **59/59 functional checks:** image decoding, no horizontal overflow at four widths, HTML integrity (duplicate IDs, anchors, alt text, label targets), all five languages (page, title, nav, headings, fixture names, form copy), dropdown sync + persistence, form validation and submission, lightbox keyboard flow, `.ics` contents, mobile menu state, zero console errors.
 - **Keyboard:** skip link, focus-visible rings, native `<dialog>` focus handling, manual lightbox focus trap, Escape behaviour, `inert` background while the mobile menu is open.
 - **Motion:** all animation is disabled under `prefers-reduced-motion`.
+- **Dark theme:** the same checks were replayed with `data-theme="dark"`; every token pair was re-contrast-checked (accents lift lighter, panels stay dark, `--paper` keeps white text on panels in both themes).
 
 > Preview screenshots in `preview/` were generated at 1440 × 1000 and 390 × 844. The Chinese preview shows the same page with `简体中文` selected.
 

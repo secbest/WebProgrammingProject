@@ -79,19 +79,39 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* ---------- Tokens ---------- */
+/* ---------- Tokens ----------
+   Two families live here:
+   · Accents (--blue, --red, --red-ink) are text/line colours that sit on the
+     page background and must flip lighter in the dark theme.
+   · Panels (--blue-panel, --red-panel, --blue-deep) are solid surfaces that
+     keep light (--paper) text on them in both themes.
+   The dark theme only overrides this token list — see html[data-theme="dark"]. */
 :root {
+  color-scheme: light;
   --paper: #f8f8f8;
-  --paper-alt: #eef1f6;
+  --bg: #f8f8f8;
+  --bg-alt: #eef1f6;
+  --surface: #ffffff;
+  --surface-hero: rgba(248, 248, 248, 0.97);
+  --header-bg: rgba(248, 248, 248, 0.92);
+  --header-shadow: 0 12px 32px rgba(17, 39, 74, 0.09);
   --ink: #262626;
   --ink-soft: #464646;
   --muted: #666c74;
   --blue: #1e509a;
+  --blue-panel: #1e509a;
   --blue-deep: #153b72;
   --red: #ff2c3e;
   --red-ink: #c8102e;
+  --red-panel: #c8102e;
   --line: rgba(30, 80, 154, 0.16);
   --line-strong: rgba(30, 80, 154, 0.42);
+  --tint: rgba(30, 80, 154, 0.05);
+  --danger: #b00020;
+  --danger-ink: #8f001a;
+  --danger-soft: #fff0f1;
+  --danger-field: #fff6f6;
+  --placeholder: #9a9a9a;
   --display: "Anton", "Arial Narrow", Impact, sans-serif;
   --sans: "Archivo", "Noto Sans KR", "Noto Sans CJK KR", "Noto Sans JP", "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", Helvetica, Arial, sans-serif;
   --narrow: "Archivo Narrow", "Archivo", "Arial Narrow", sans-serif;
@@ -99,6 +119,37 @@
   --pad: clamp(20px, 4.4vw, 64px);
   --section: clamp(64px, 8.4vw, 120px);
   --ease: cubic-bezier(0.22, 0.7, 0.2, 1);
+}
+
+/* ---------- Dark theme ----------
+   Same deck, under floodlights: paper becomes night blue, accents lift so
+   text keeps WCAG AA contrast, panels deepen. Applied via data-theme on
+   <html> (see js/main.js — "Theme"), before first paint. */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #12161d;
+  --bg-alt: #181e27;
+  --surface: #1e2632;
+  --surface-hero: rgba(24, 30, 39, 0.94);
+  --header-bg: rgba(18, 22, 29, 0.92);
+  --header-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --ink: #eef1f5;
+  --ink-soft: #c6cdd6;
+  --muted: #98a2ad;
+  --blue: #a3c2ea;
+  --blue-panel: #1b3a63;
+  --blue-deep: #0d1524;
+  --red: #ff5060;
+  --red-ink: #ff97a1;
+  --red-panel: #d31533;
+  --line: rgba(163, 194, 234, 0.18);
+  --line-strong: rgba(163, 194, 234, 0.45);
+  --tint: rgba(163, 194, 234, 0.09);
+  --danger: #ff8b96;
+  --danger-ink: #ffb9bf;
+  --danger-soft: rgba(255, 90, 105, 0.12);
+  --danger-field: rgba(255, 90, 105, 0.1);
+  --placeholder: #79828d;
 }
 
 /* ---------- Reset / base ---------- */
@@ -114,7 +165,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--paper);
+  background: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 16px;
@@ -133,7 +184,7 @@ a { color: inherit; }
 button { font: inherit; color: inherit; }
 [hidden] { display: none !important; }
 
-::selection { background: var(--blue); color: var(--paper); }
+::selection { background: var(--blue-panel); color: var(--paper); }
 
 :focus-visible {
   outline: 2.5px solid var(--red);
@@ -165,7 +216,7 @@ button { font: inherit; color: inherit; }
   top: 10px;
   left: 10px;
   z-index: 200;
-  background: var(--blue);
+  background: var(--blue-panel);
   color: var(--paper);
   padding: 12px 18px;
   font-family: var(--narrow);
@@ -265,14 +316,14 @@ button { font: inherit; color: inherit; }
 .btn-arrow { transition: transform 0.25s var(--ease); }
 .btn:hover .btn-arrow { transform: translateX(4px); }
 
-.btn-primary { background: var(--blue); border-color: var(--blue); color: #fff; }
-.btn-primary:hover { background: var(--red-ink); border-color: var(--red-ink); color: #fff; }
+.btn-primary { background: var(--blue-panel); border-color: var(--blue-panel); color: #fff; }
+.btn-primary:hover { background: var(--red-panel); border-color: var(--red-panel); color: #fff; }
 
 .btn-ghost { background: transparent; border-color: var(--line-strong); color: var(--blue); }
-.btn-ghost:hover { background: var(--blue); border-color: var(--blue); color: var(--paper); }
+.btn-ghost:hover { background: var(--blue-panel); border-color: var(--blue-panel); color: var(--paper); }
 
-.btn-cream { background: var(--paper); border-color: var(--paper); color: var(--blue); }
-.btn-cream:hover { background: var(--red-ink); border-color: var(--red-ink); color: #fff; }
+.btn-cream { background: var(--paper); border-color: var(--paper); color: var(--blue-panel); }
+.btn-cream:hover { background: var(--red-panel); border-color: var(--red-panel); color: #fff; }
 
 .btn-sm { padding: 12px 18px; font-size: 11px; gap: 10px; }
 
@@ -308,13 +359,13 @@ button { font: inherit; color: inherit; }
   position: sticky;
   top: 0;
   z-index: 60;
-  background: rgba(248, 248, 248, 0.92);
+  background: var(--header-bg);
   -webkit-backdrop-filter: blur(12px) saturate(1.3);
   backdrop-filter: blur(12px) saturate(1.3);
   border-bottom: 1px solid var(--line);
   transition: box-shadow 0.3s;
 }
-.site-header.is-stuck { box-shadow: 0 12px 32px rgba(17, 39, 74, 0.09); }
+.site-header.is-stuck { box-shadow: var(--header-shadow); }
 
 .header-inner {
   display: flex;
@@ -406,10 +457,10 @@ button { font: inherit; color: inherit; }
   cursor: pointer;
   transition: border-color 0.25s var(--ease), background 0.25s var(--ease), color 0.25s var(--ease);
 }
-.lang-select-input:hover { border-color: var(--line-strong); background: rgba(30, 80, 154, 0.05); }
+.lang-select-input:hover { border-color: var(--line-strong); background: var(--tint); }
 .lang-select-input:focus-visible { outline: 2.5px solid var(--red); outline-offset: 2px; }
 .lang-select-input option {
-  background: var(--paper);
+  background: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
   font-weight: 400;
@@ -465,6 +516,25 @@ button { font: inherit; color: inherit; }
 .menu-btn[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
 .menu-btn[aria-expanded="true"] span:last-child { transform: translateY(-4px) rotate(-45deg); }
 
+/* Theme toggle — moon in the light theme, sun in the dark theme.
+   aria-pressed is true while the dark theme is on. */
+.theme-btn {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  background: none;
+  color: var(--blue);
+  cursor: pointer;
+  transition: border-color 0.25s var(--ease), color 0.25s var(--ease), background 0.25s var(--ease);
+}
+.theme-btn:hover { border-color: var(--line-strong); background: var(--tint); }
+.theme-btn svg { width: 18px; height: 18px; }
+.theme-btn .icon-sun { display: none; }
+html[data-theme="dark"] .theme-btn .icon-sun { display: block; }
+html[data-theme="dark"] .theme-btn .icon-moon { display: none; }
+
 /* ---------- Mobile menu ---------- */
 .mobile-menu {
   position: fixed;
@@ -475,7 +545,7 @@ button { font: inherit; color: inherit; }
   justify-content: flex-start;
   gap: 26px;
   padding: 18px var(--pad) 34px;
-  background: var(--paper);
+  background: var(--bg);
   overflow-y: auto;
 }
 .mobile-nav { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
@@ -535,6 +605,9 @@ button { font: inherit; color: inherit; }
 .mobile-actions .lang-select { width: 100%; }
 .mobile-actions .lang-select-input { min-width: 0; }
 .mobile-actions .btn { width: 100%; }
+.mobile-actions-row { display: flex; align-items: stretch; gap: 12px; width: 100%; }
+.mobile-actions-row .theme-btn { flex: none; width: 47px; height: auto; }
+.mobile-actions-row .lang-select { flex: 1; width: auto; }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -665,7 +738,7 @@ button { font: inherit; color: inherit; }
   z-index: 2;
   padding: 9px 14px;
   border-left: 3px solid var(--red);
-  background: var(--paper);
+  background: var(--surface);
   color: var(--blue);
   font-family: var(--narrow);
   font-weight: 700;
@@ -695,11 +768,11 @@ button { font: inherit; color: inherit; }
   gap: 4px;
   padding: 16px 18px;
   border-top: 4px solid var(--red);
-  background: rgba(248, 248, 248, 0.97);
+  background: var(--surface-hero);
   text-decoration: none;
   transition: transform 0.3s var(--ease), background 0.3s;
 }
-.hero-next:hover { transform: translateY(-3px); background: #fff; }
+.hero-next:hover { transform: translateY(-3px); background: var(--surface); }
 .hero-next-label {
   display: flex;
   align-items: center;
@@ -736,7 +809,7 @@ button { font: inherit; color: inherit; }
 .ticker {
   overflow: hidden;
   padding: 12px 0;
-  background: var(--blue);
+  background: var(--blue-panel);
   color: var(--paper);
   border-top: 4px solid var(--red);
 }
@@ -781,7 +854,7 @@ button { font: inherit; color: inherit; }
 }
 .club-copy .text-link { margin-top: 26px; }
 
-.club-figure { margin: 0; background: var(--blue); }
+.club-figure { margin: 0; background: var(--blue-panel); }
 .club-figure img {
   width: 100%;
   height: auto;
@@ -793,7 +866,7 @@ button { font: inherit; color: inherit; }
   align-items: center;
   gap: 10px;
   padding: 12px 16px;
-  background: var(--blue);
+  background: var(--blue-panel);
   color: var(--paper);
   font-family: var(--narrow);
   font-weight: 700;
@@ -895,7 +968,7 @@ button { font: inherit; color: inherit; }
 
 /* ---------- Schedule ---------- */
 .schedule {
-  background: var(--paper-alt);
+  background: var(--bg-alt);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -909,7 +982,7 @@ button { font: inherit; color: inherit; }
   gap: 22px clamp(24px, 4vw, 48px);
   align-items: end;
   padding: clamp(24px, 3.4vw, 42px);
-  background: var(--blue);
+  background: var(--blue-panel);
   background-image:
     radial-gradient(circle at 82% 20%, rgba(255, 255, 255, 0.07) 0, transparent 46%),
     linear-gradient(118deg, rgba(0, 0, 0, 0.06), transparent 55%);
@@ -1044,7 +1117,7 @@ button { font: inherit; color: inherit; }
   border-bottom: 1px solid var(--line);
   transition: background 0.25s;
 }
-.fixture:hover { background: rgba(30, 80, 154, 0.035); }
+.fixture:hover { background: var(--tint); }
 .fixture-date {
   grid-area: date;
   display: flex;
@@ -1161,7 +1234,7 @@ button { font: inherit; color: inherit; }
   text-transform: uppercase;
 }
 .lang-banner-note { margin-left: auto; color: var(--muted); font-size: 12px; }
-.lang-banner .lang-select-lg .lang-select-input { background: #fff; }
+.lang-banner .lang-select-lg .lang-select-input { background: var(--surface); }
 
 /* ---------- Gallery ---------- */
 .gallery-grid {
@@ -1216,7 +1289,7 @@ button { font: inherit; color: inherit; }
   min-height: clamp(86px, 9vw, 112px);
   margin-top: 12px;
   padding: 12px clamp(18px, 3vw, 34px);
-  background: var(--red-ink);
+  background: var(--red-panel);
   color: #fff;
   text-decoration: none;
 }
@@ -1240,7 +1313,7 @@ button { font: inherit; color: inherit; }
   display: grid;
   grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
   border-top: 1px solid var(--line);
-  background: var(--paper);
+  background: var(--bg);
 }
 .join-media {
   position: relative;
@@ -1354,7 +1427,7 @@ button { font: inherit; color: inherit; }
 .practice-card {
   position: relative;
   padding: clamp(26px, 3vw, 36px);
-  background: var(--blue);
+  background: var(--blue-panel);
   color: var(--paper);
 }
 .practice-card::before {
@@ -1397,7 +1470,7 @@ button { font: inherit; color: inherit; }
   line-height: 1.5;
 }
 .practice-card .btn { margin-top: 20px; border-color: rgba(248, 248, 248, 0.55); color: var(--paper); }
-.practice-card .btn:hover { background: var(--paper); color: var(--blue); border-color: var(--paper); }
+.practice-card .btn:hover { background: var(--paper); color: var(--blue-panel); border-color: var(--paper); }
 
 /* ---------- Footer ---------- */
 .footer {
@@ -1523,7 +1596,7 @@ button { font: inherit; color: inherit; }
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
-.lb-btn:hover { background: var(--paper); color: var(--blue); }
+.lb-btn:hover { background: var(--paper); color: var(--blue-panel); }
 .lb-close { top: 20px; right: 20px; font-size: 25px; }
 .lb-prev { left: 20px; top: 50%; transform: translateY(-50%); }
 .lb-next { right: 20px; top: 50%; transform: translateY(-50%); }
@@ -1544,7 +1617,7 @@ button { font: inherit; color: inherit; }
   max-height: calc(100svh - 36px);
   padding: 0;
   border: 0;
-  background: var(--paper);
+  background: var(--bg);
   color: var(--ink);
   overflow-y: auto;
 }
@@ -1567,7 +1640,7 @@ button { font: inherit; color: inherit; }
   line-height: 1;
   cursor: pointer;
 }
-.signup-close:hover { background: var(--blue); color: var(--paper); }
+.signup-close:hover { background: var(--blue-panel); color: var(--paper); }
 .signup-title {
   margin: 10px 0 8px;
   color: var(--blue);
@@ -1598,17 +1671,17 @@ button { font: inherit; color: inherit; }
   padding: 11px 12px;
   border: 1px solid var(--line-strong);
   border-radius: 0;
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 15px;
 }
-.field input::placeholder { color: #9a9a9a; opacity: 1; }
+.field input::placeholder { color: var(--placeholder); opacity: 1; }
 .field input:focus-visible,
 .field select:focus-visible { outline: 2px solid var(--blue); outline-offset: 0; }
-.field input[aria-invalid="true"] { border-color: #b00020; background: #fff6f6; }
-.field-error { margin-top: 5px; color: #b00020; font-size: 11.5px; }
-.form-error { padding: 9px 11px; border-left: 3px solid #b00020; background: #fff0f1; color: #8f001a; font-size: 12px; }
+.field input[aria-invalid="true"] { border-color: var(--danger); background: var(--danger-field); }
+.field-error { margin-top: 5px; color: var(--danger); font-size: 11.5px; }
+.form-error { padding: 9px 11px; border-left: 3px solid var(--danger); background: var(--danger-soft); color: var(--danger-ink); font-size: 12px; }
 .form-note { color: var(--muted); font-size: 11px; line-height: 1.5; }
 .signup-form .btn { width: 100%; margin-top: 4px; }
 .signup-success { padding-top: 6px; }
@@ -1784,6 +1857,7 @@ html[lang="zh"] .activity p { max-width: 30em; }
   .brand-name { font-size: 15px; }
   .brand-sub { font-size: 7.5px; letter-spacing: 0.24em; }
   .menu-btn { width: 38px; height: 38px; }
+  .theme-btn { width: 38px; height: 38px; }
 
   .hero-title { font-size: clamp(57px, 18vw, 100px); }
   .hero-sub { font-size: clamp(24px, 6vw, 28px); gap: 12px; }

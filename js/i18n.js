@@ -17,6 +17,8 @@ window.GW_I18N = {
     "nav.menu": "Open menu",
     "nav.closeMenu": "Close menu",
     "nav.language": "Language",
+    "nav.themeDark": "Switch to dark theme",
+    "nav.themeLight": "Switch to light theme",
 
     "hero.kicker": "Gachon University · Creative Club Activity",
     "hero.sub": "BASEBALL CLUB",
@@ -181,6 +183,8 @@ window.GW_I18N = {
     "nav.menu": "메뉴 열기",
     "nav.closeMenu": "메뉴 닫기",
     "nav.language": "언어",
+    "nav.themeDark": "다크 모드로 전환",
+    "nav.themeLight": "라이트 모드로 전환",
 
     "hero.kicker": "가천대학교 · 비교과 동아리",
     "hero.sub": "BASEBALL CLUB",
@@ -345,6 +349,8 @@ window.GW_I18N = {
     "nav.menu": "Mở menu",
     "nav.closeMenu": "Đóng menu",
     "nav.language": "Ngôn ngữ",
+    "nav.themeDark": "Chuyển sang giao diện tối",
+    "nav.themeLight": "Chuyển sang giao diện sáng",
 
     "hero.kicker": "Đại học Gachon · Hoạt động ngoại khóa",
     "hero.sub": "BASEBALL CLUB",
@@ -509,6 +515,8 @@ window.GW_I18N = {
     "nav.menu": "メニューを開く",
     "nav.closeMenu": "メニューを閉じる",
     "nav.language": "言語",
+    "nav.themeDark": "ダークモードに切り替え",
+    "nav.themeLight": "ライトモードに切り替え",
 
     "hero.kicker": "嘉泉大学 · 課外活動",
     "hero.sub": "BASEBALL CLUB",
@@ -673,6 +681,8 @@ window.GW_I18N = {
     "nav.menu": "打开菜单",
     "nav.closeMenu": "关闭菜单",
     "nav.language": "语言",
+    "nav.themeDark": "切换到深色模式",
+    "nav.themeLight": "切换到浅色模式",
 
     "hero.kicker": "嘉泉大学 · 课外社团活动",
     "hero.sub": "BASEBALL CLUB",
