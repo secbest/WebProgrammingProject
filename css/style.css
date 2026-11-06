@@ -141,15 +141,18 @@ html[data-theme="dark"] {
   --ink: #eef1f5;
   --ink-soft: #c6cdd6;
   --muted: #98a2ad;
-  --blue: #a3c2ea;
+  /* Title/accent blue: same royal hue as the light theme's --blue, but at
+     full saturation (hsl 216 100% 72% vs 214 63% 78%) so display type stays
+     vivid on the night surfaces — 7.6:1 on --bg, still WCAG AAA. */
+  --blue: #70a9ff;
   --blue-panel: #1b3a63;
   --blue-deep: #0d1524;
   --red: #ff5060;
   --red-ink: #ff97a1;
   --red-panel: #d31533;
-  --line: rgba(163, 194, 234, 0.18);
-  --line-strong: rgba(163, 194, 234, 0.45);
-  --tint: rgba(163, 194, 234, 0.09);
+  --line: rgba(112, 169, 255, 0.18);
+  --line-strong: rgba(112, 169, 255, 0.45);
+  --tint: rgba(112, 169, 255, 0.09);
   --danger: #ff8b96;
   --danger-ink: #ffb9bf;
   --danger-soft: rgba(255, 90, 105, 0.12);
